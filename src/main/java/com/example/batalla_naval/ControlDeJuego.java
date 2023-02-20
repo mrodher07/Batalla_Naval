@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControlDeJuego {
-    MediaPlayer mediaPlayer;
+    //MediaPlayer mediaPlayer;
     String nombreGanador = "";
     Timeline ganador;
     DialogPane dialogGanador;
@@ -78,9 +78,9 @@ public class ControlDeJuego {
                     imageView.setFitHeight(70);
                     imageView.setFitWidth(80);
                     dialogGanador.setGraphic(imageView);
-                    Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
+                    /*Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
                     mediaPlayer= new MediaPlayer(pick);
-                    mediaPlayer.play();
+                    mediaPlayer.play();*/
                     alert.setTitle("Victoria del Equipo " + nombreGanador);
 
 
@@ -90,25 +90,25 @@ public class ControlDeJuego {
                     ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
                     imageView.setFitHeight(70);
                     imageView.setFitWidth(80);
-                    dialog.setGraphic(imageView);
-                    Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
+                    dialogGanador.setGraphic(imageView);
+                    /*Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
                     mediaPlayer= new MediaPlayer(pick);
-                    mediaPlayer.play();
+                    mediaPlayer.play();*/
                     alert.setTitle("Victoria del Equipo " + nombreGanador);
                 }
 
                 //mediaPlayer2.stop();
                 dialogGanador.getStyleClass().add("dialog");
                 alert.setContentText("¡¡¡El Equipo "+nombreGanador+" ha ganado!!!");
-                Inicio inicio = new Inicio();
-                alert.showAndWait().ifPresent(response -> {
+                //Inicio inicio = new Inicio();
+                /*alert.showAndWait().ifPresent(response -> {
                     try{
                         mediaPlayer.stop();
                         inicio.start(new Stage());
                     }catch (IOException e){
                         throw new RuntimeException(e);
                     }
-                });
+                });*/
             });
         });
         pauseTransition.play();

@@ -31,13 +31,15 @@ public class HelloController {
     Barcos destructorA;
     Barcos submarinoA;
 
+    ControlDeJuego control;
+
     List<Integer> posicionBarco = new ArrayList<>();
 
     public void initialize(){
-        //Image fondo = new Image(getClass().getResourceAsStream("imagenes/fondo.png"));
-        //ImageView back = new ImageView(fondo);
-        //ventana.setBackground(new Background(new BackgroundImage(back.getImage(), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-        //        BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        Image fondo = new Image(getClass().getResourceAsStream("imagenes/fondo.jpg"));
+        ImageView back = new ImageView(fondo);
+        ventana.setBackground(new Background(new BackgroundImage(back.getImage(), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+               BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         creacionBarcos();
     }
 
@@ -48,7 +50,22 @@ public class HelloController {
         posicionBarco.add(4);
 
         Collections.shuffle(posicionBarco);
-        con
+        control = new ControlDeJuego();
+
+        //Destructor Azul
+        /*ImageView imagenDestructor = new ImageView();
+        imagenDestructor.setImage(new Image(getClass().getResourceAsStream("")));*/
+
+        //Lancha Azul
+        ImageView imagenLancha = new ImageView();
+        imagenLancha.setImage(new Image(getClass().getResourceAsStream("imagenes/Lancha")));
+        //posicionBarco(imagenLancha, posicionBarco.remove(0));
+        control.aniadirBarco(lanchaA = new Barcos("lancha", "Azul", imagenLancha, control.getBarcos(), ventana));
+
+    }
+
+    public void posicionA(ImageView imagen, int num){
+
     }
 
 }
