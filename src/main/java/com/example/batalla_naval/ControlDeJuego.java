@@ -33,25 +33,25 @@ public class ControlDeJuego {
 
     public void finDeJuego(){
         ganador = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
-            int barcosR = 0;
-            int barcosA = 0;
+            int barcosES = 0;
+            int barcosUSA = 0;
 
             for(Barcos barco: listaBarcos){
                 if (barco.getVida()>0){
-                    if(barco.getEquipo().equals("Rojo")){
-                        barcosR++;
+                    if(barco.getEquipo().equals("ES")){
+                        barcosES++;
                     }
-                    if (barco.getEquipo().equals("Azul")){
-                        barcosA++;
+                    if (barco.getEquipo().equals("USA")){
+                        barcosUSA++;
                     }
                 }
             }
-            if(barcosR == 0 && barcosA >=1){
+            if(barcosES == 0 && barcosUSA >=1){
                 nombreGanador = "Azul";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
             }
-            if(barcosA == 0 && barcosR >=1){
+            if(barcosUSA == 0 && barcosES >=1){
                 nombreGanador = "Rojo";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
@@ -66,18 +66,18 @@ public class ControlDeJuego {
         alert.setHeaderText(null);
 
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(this.getClass().getResource("imagenes/iconoApp.png").toString()));
+        //stage.getIcons().add(new Image(this.getClass().getResource("imagenes/iconoApp.png").toString()));
 
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(0.5));
         pauseTransition.setOnFinished(event -> {
             Platform.runLater(() -> {
                 dialogGanador = alert.getDialogPane();
-                if (nombreGanador.equals("Azul")) {
-                    dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorAzul.css").toString());
-                    ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
+                if (nombreGanador.equals("ESA")) {
+                    //dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorAzul.css").toString());
+                    /*ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
                     imageView.setFitHeight(70);
                     imageView.setFitWidth(80);
-                    dialogGanador.setGraphic(imageView);
+                    dialogGanador.setGraphic(imageView);*/
                     /*Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
                     mediaPlayer= new MediaPlayer(pick);
                     mediaPlayer.play();*/
@@ -85,21 +85,21 @@ public class ControlDeJuego {
 
 
                 } else {
-                    dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorRojo.css").toString());
+                    /*dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorRojo.css").toString());
                     dialogGanador.getStyleClass().add("dialog");
                     ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
                     imageView.setFitHeight(70);
                     imageView.setFitWidth(80);
                     dialogGanador.setGraphic(imageView);
-                    /*Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
+                    Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
                     mediaPlayer= new MediaPlayer(pick);
                     mediaPlayer.play();*/
-                    alert.setTitle("Victoria del Equipo " + nombreGanador);
+                    alert.setTitle("Victoria de " + nombreGanador);
                 }
 
                 //mediaPlayer2.stop();
                 dialogGanador.getStyleClass().add("dialog");
-                alert.setContentText("¡¡¡El Equipo "+nombreGanador+" ha ganado!!!");
+                alert.setContentText("¡¡¡"+nombreGanador+" ha ganado!!!");
                 //Inicio inicio = new Inicio();
                 /*alert.showAndWait().ifPresent(response -> {
                     try{

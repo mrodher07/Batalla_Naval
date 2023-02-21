@@ -1,8 +1,10 @@
 package com.example.batalla_naval;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -70,6 +72,15 @@ public class Barcos {
             imagen.setFitHeight(40);
             imagen.setFitWidth(40);
         }
+
+        movimiento = new Timeline(new KeyFrame(Duration.seconds(0.05), e -> {
+            if(!modoDisparo){
+                detectarParedes();
+                movimientoBarco();
+            }
+        }));
+        movimiento.setCycleCount(Timeline.INDEFINITE);
+        movimiento.play();
     }
 
     public synchronized void movimientoBarco(){

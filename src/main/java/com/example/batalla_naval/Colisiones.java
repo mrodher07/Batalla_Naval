@@ -12,17 +12,17 @@ public class Colisiones {
             Random random = new Random();
             int randomNumber = random.nextInt(10) + 1;
             if (randomNumber <= 5) {
-                if (EjeX < 0 || EjeX > 960) {
+                if (EjeX < 0 || EjeX > 970) {
                     barco.setDireccion(180 + barco.getDireccion());
                 }
-                if (EjeY < 0 || EjeY > 700) {
+                if (EjeY < 0 || EjeY > 670) {
                     barco.setDireccion(180 + barco.getDireccion());
                 }
             } else {
-                if (EjeX < 0 || EjeX > 960) {
-                    barco.setDireccion(-180 + barco.getDireccion());
+                if (EjeX < 0 || EjeX > 970) {
+                    barco.setDireccion(180 - barco.getDireccion());
                 }
-                if (EjeY < 0 || EjeY > 700) {
+                if (EjeY < 0 || EjeY > 670) {
                     barco.setDireccion(-barco.getDireccion());
                 }
             }
@@ -30,18 +30,18 @@ public class Colisiones {
             if (barco.getNombre().equals("submarino")) {
                 Random random = new Random();
                 int randomNumber = random.nextInt(10) + 1;
-                if (randomNumber >= 5) {
-                    if (EjeX < 0 || EjeX > 960) {
+                if (randomNumber <= 5) {
+                    if (EjeX < 0 || EjeX > 970) {
                         barco.setDireccion(180 + barco.getDireccion());
                     }
-                    if (EjeY < 0 || EjeY > 700) {
+                    if (EjeY < 0 || EjeY > 670) {
                         barco.setDireccion(180 + barco.getDireccion());
                     }
                 } else {
-                    if (EjeX < 0 || EjeX > 960) {
+                    if (EjeX < 0 || EjeX > 970) {
                         barco.setDireccion(180 - barco.getDireccion());
                     }
-                    if (EjeY < 0 || EjeY > 700) {
+                    if (EjeY < 0 || EjeY > 670) {
                         barco.setDireccion(-barco.getDireccion());
                     }
                 }
@@ -50,17 +50,17 @@ public class Colisiones {
                     Random random = new Random();
                     int randomNumber = random.nextInt(10) + 1;
                     if (randomNumber <= 5) {
-                        if (EjeX < 0 || EjeX > 960) {
+                        if (EjeX < 0 || EjeX > 970) {
                             barco.setDireccion(180 + barco.getDireccion());
                         }
-                        if (EjeY < 0 || EjeY > 700) {
+                        if (EjeY < 0 || EjeY > 670) {
                             barco.setDireccion(180 + barco.getDireccion());
                         }
                     } else {
-                        if (EjeX < 0 || EjeX > 960) {
+                        if (EjeX < 0 || EjeX > 970) {
                             barco.setDireccion(180 - barco.getDireccion());
                         }
-                        if (EjeY < 0 || EjeY > 700) {
+                        if (EjeY < 0 || EjeY > 670) {
                             barco.setDireccion(-barco.getDireccion());
                         }
                     }
@@ -68,17 +68,17 @@ public class Colisiones {
                     Random random = new Random();
                     int randomNumber = random.nextInt(10) + 1;
                     if (randomNumber <= 5) {
-                        if (EjeX < 0 || EjeX > 960) {
+                        if (EjeX < 0 || EjeX > 970) {
                             barco.setDireccion(180 + barco.getDireccion());
                         }
-                        if (EjeY < 0 || EjeY > 700) {
+                        if (EjeY < 0 || EjeY > 670) {
                             barco.setDireccion(180 + barco.getDireccion());
                         }
                     } else {
-                        if (EjeX < 0 || EjeX > 960) {
+                        if (EjeX < 0 || EjeX > 970) {
                             barco.setDireccion(180 - barco.getDireccion());
                         }
-                        if (EjeY < 0 || EjeY > 700) {
+                        if (EjeY < 0 || EjeY > 670) {
                             barco.setDireccion(-barco.getDireccion());
                         }
                     }

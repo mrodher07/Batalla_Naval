@@ -1,7 +1,6 @@
 package com.example.batalla_naval;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -15,21 +14,21 @@ public class HelloController {
     @FXML
     private AnchorPane ventana;
     @FXML
-    private AnchorPane anchorAzul;
+    private AnchorPane anchorUSA;
     @FXML
-    private AnchorPane anchorRojo;
+    private AnchorPane anchorES;
     @FXML
     private AnchorPane globalMark;
 
-    Barcos lanchaR;
-    Barcos acorazadoR;
-    Barcos destructorR;
-    Barcos submarinoR;
+    Barcos lanchaES;
+    Barcos acorazadoES;
+    Barcos destructorES;
+    Barcos submarinoES;
 
-    Barcos lanchaA;
-    Barcos acorazadoA;
-    Barcos destructorA;
-    Barcos submarinoA;
+    Barcos lanchaUSA;
+    Barcos acorazadoUSA;
+    Barcos destructorUSA;
+    Barcos submarinoUSA;
 
     ControlDeJuego control;
 
@@ -56,16 +55,40 @@ public class HelloController {
         /*ImageView imagenDestructor = new ImageView();
         imagenDestructor.setImage(new Image(getClass().getResourceAsStream("")));*/
 
-        //Lancha Azul
+        //Lancha España
         ImageView imagenLancha = new ImageView();
-        imagenLancha.setImage(new Image(getClass().getResourceAsStream("imagenes/Lancha")));
-        //posicionBarco(imagenLancha, posicionBarco.remove(0));
-        control.aniadirBarco(lanchaA = new Barcos("lancha", "Azul", imagenLancha, control.getBarcos(), ventana));
+        imagenLancha.setImage(new Image(getClass().getResourceAsStream("imagenes/LanchaES.png")));
+        posicionES(imagenLancha, posicionBarco.remove(0));
+        control.aniadirBarco(lanchaES = new Barcos("lancha", "ES", imagenLancha, control.getBarcos(), ventana));
+
+        ImageView imagenAcorazado = new ImageView();
+        imagenAcorazado.setImage(new Image(getClass().getResourceAsStream("imagenes/AcorazadoES.png")));
+        posicionES(imagenAcorazado, posicionBarco.remove(0));
+        control.aniadirBarco(acorazadoES = new Barcos("acorazado", "ES", imagenAcorazado, control.getBarcos(), ventana));
+
+        ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen());
+
+        control.finDeJuego();
 
     }
 
-    public void posicionA(ImageView imagen, int num){
-
+    public void posicionES(ImageView imagen, int num){
+        if(num==1){
+            imagen.setLayoutX(28);
+            imagen.setLayoutY(371);
+        }
+        if(num==2){
+            imagen.setLayoutX(28);
+            imagen.setLayoutY(75);
+        }
+        if(num==3){
+            imagen.setLayoutX(28);
+            imagen.setLayoutY(149);
+        }
+        if(num==1){
+            imagen.setLayoutX(28);
+            imagen.setLayoutY(575);
+        }
     }
 
 }
