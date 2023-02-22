@@ -113,6 +113,8 @@ public class HelloController {
         ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen(), destructorES.getImagen(), submarinoES.getImagen(),
                                     lanchaUSA.getImagen(), acorazadoUSA.getImagen(), destructorUSA.getImagen(), submarinoUSA.getImagen());
 
+
+
         control.finDeJuego();
 
     }
