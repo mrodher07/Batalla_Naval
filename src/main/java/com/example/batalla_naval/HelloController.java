@@ -38,7 +38,7 @@ public class HelloController {
         Image fondo = new Image(getClass().getResourceAsStream("imagenes/fondo.jpg"));
         ImageView back = new ImageView(fondo);
         ventana.setBackground(new Background(new BackgroundImage(back.getImage(), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-               BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+                BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         creacionBarcos();
     }
 
@@ -61,12 +61,25 @@ public class HelloController {
         posicionES(imagenLancha, posicionBarco.remove(0));
         control.aniadirBarco(lanchaES = new Barcos("lancha", "ES", imagenLancha, control.getBarcos(), ventana));
 
+        //Acorazado España
         ImageView imagenAcorazado = new ImageView();
         imagenAcorazado.setImage(new Image(getClass().getResourceAsStream("imagenes/AcorazadoES.png")));
         posicionES(imagenAcorazado, posicionBarco.remove(0));
         control.aniadirBarco(acorazadoES = new Barcos("acorazado", "ES", imagenAcorazado, control.getBarcos(), ventana));
 
-        ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen());
+        //Destructor España
+        ImageView imagenDestructor = new ImageView();
+        imagenDestructor.setImage(new Image(getClass().getResourceAsStream("imagenes/DestructorES.png")));
+        posicionES(imagenAcorazado,posicionBarco.remove(0));
+        control.aniadirBarco(destructorES = new Barcos("destructor", "ES", imagenDestructor, control.getBarcos(), ventana));
+
+        //Submarino España
+        ImageView imagenSubmarino = new ImageView();
+        imagenSubmarino.setImage(new Image(getClass().getResourceAsStream("imagenes/SubmarinoES.png")));
+        posicionES(imagenSubmarino, posicionBarco.remove(0));
+        control.aniadirBarco(submarinoES = new Barcos("submarino", "ES", imagenSubmarino, control.getBarcos(), ventana));
+
+        ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen(), destructorES.getImagen(), submarinoES.getImagen());
 
         control.finDeJuego();
 
@@ -85,10 +98,34 @@ public class HelloController {
             imagen.setLayoutX(28);
             imagen.setLayoutY(149);
         }
-        if(num==1){
+        if(num==4){
             imagen.setLayoutX(28);
             imagen.setLayoutY(575);
         }
+    }
+
+    public void posicionUSA(ImageView imagen, int num) {
+
+        if (num == 1) {
+            imagen.setLayoutX(882);
+            imagen.setLayoutY(371);
+        }
+
+        if (num == 2) {
+            imagen.setLayoutX(876);
+            imagen.setLayoutY(75);
+        }
+
+        if (num == 3) {
+            imagen.setLayoutX(876);
+            imagen.setLayoutY(147);
+        }
+
+        if (num == 4) {
+            imagen.setLayoutX(876);
+            imagen.setLayoutY(575);
+        }
+
     }
 
 }

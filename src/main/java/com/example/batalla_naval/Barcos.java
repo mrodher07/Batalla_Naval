@@ -60,8 +60,8 @@ public class Barcos {
             sonar = 153;
             potenciaDisparo = 50;
             tiempoRecarga = 6000;
-            imagen.setFitHeight(70);
-            imagen.setFitWidth(70);
+            imagen.setFitHeight(40);
+            imagen.setFitWidth(50);
         } else if (nombre.contains("submarino")) {
             vida = 30;
             //2
