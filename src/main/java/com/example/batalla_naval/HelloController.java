@@ -79,7 +79,39 @@ public class HelloController {
         posicionES(imagenSubmarino, posicionBarco.remove(0));
         control.aniadirBarco(submarinoES = new Barcos("submarino", "ES", imagenSubmarino, control.getBarcos(), ventana));
 
-        ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen(), destructorES.getImagen(), submarinoES.getImagen());
+        posicionBarco.add(1);
+        posicionBarco.add(2);
+        posicionBarco.add(3);
+        posicionBarco.add(4);
+        Collections.shuffle(posicionBarco);
+
+        //Lancha USA
+        ImageView imagenLancha2 = new ImageView();
+        imagenLancha2.setImage(new Image(getClass().getResourceAsStream("imagenes/LanchaUSA.png")));
+        posicionUSA(imagenLancha2, posicionBarco.remove(0));
+        control.aniadirBarco(lanchaUSA = new Barcos("lancha", "USA", imagenLancha2, control.getBarcos(), ventana));
+
+        //Acorazado USA
+        ImageView imagenAcorazado2 = new ImageView();
+        imagenAcorazado2.setImage(new Image(getClass().getResourceAsStream("imagenes/AcorazadoUSA.png")));
+        posicionUSA(imagenAcorazado2, posicionBarco.remove(0));
+        control.aniadirBarco(acorazadoUSA = new Barcos("acorazado", "USA", imagenAcorazado2, control.getBarcos(), ventana));
+
+        //Destructor USA
+        ImageView imagenDestructor2 = new ImageView();
+        imagenDestructor2.setImage(new Image(getClass().getResourceAsStream("imagenes/DestructorUSA.png")));
+        posicionUSA(imagenAcorazado2,posicionBarco.remove(0));
+        control.aniadirBarco(destructorUSA = new Barcos("destructor", "USA", imagenDestructor2, control.getBarcos(), ventana));
+
+        //Submarino USA
+        ImageView imagenSubmarino2 = new ImageView();
+        imagenSubmarino2.setImage(new Image(getClass().getResourceAsStream("imagenes/SubmarinoUSA.png")));
+        posicionUSA(imagenSubmarino2, posicionBarco.remove(0));
+        control.aniadirBarco(submarinoUSA = new Barcos("submarino", "USA", imagenSubmarino2, control.getBarcos(), ventana));
+
+
+        ventana.getChildren().addAll(lanchaES.getImagen(), acorazadoES.getImagen(), destructorES.getImagen(), submarinoES.getImagen(),
+                                    lanchaUSA.getImagen(), acorazadoUSA.getImagen(), destructorUSA.getImagen(), submarinoUSA.getImagen());
 
         control.finDeJuego();
 
