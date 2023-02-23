@@ -47,12 +47,12 @@ public class ControlDeJuego {
                 }
             }
             if(barcosES == 0 && barcosUSA >=1){
-                nombreGanador = "Azul";
+                nombreGanador = "USA";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
             }
             if(barcosUSA == 0 && barcosES >=1){
-                nombreGanador = "Rojo";
+                nombreGanador = "ES";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
             }
@@ -101,14 +101,10 @@ public class ControlDeJuego {
                 dialogGanador.getStyleClass().add("dialog");
                 alert.setContentText("¡¡¡"+nombreGanador+" ha ganado!!!");
                 //Inicio inicio = new Inicio();
-                /*alert.showAndWait().ifPresent(response -> {
-                    try{
-                        mediaPlayer.stop();
-                        inicio.start(new Stage());
-                    }catch (IOException e){
-                        throw new RuntimeException(e);
-                    }
-                });*/
+                alert.showAndWait().ifPresent(response -> {
+                    // mediaPlayer.stop();
+                    // inicio.start(new Stage());
+                });
             });
         });
         pauseTransition.play();
