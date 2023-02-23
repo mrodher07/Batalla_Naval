@@ -3,11 +3,14 @@ package com.example.batalla_naval;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -15,7 +18,7 @@ import java.util.Random;
 
 public class Barcos {
 
-    //private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
     private Timeline movimiento;
     private ArrayList<Barcos> listaBarcos;
     private int sonar;
@@ -123,19 +126,28 @@ public class Barcos {
                 tiempoUltimoDisparo = System.currentTimeMillis();
                 int disparar = this.disparo();
                 barco.setVida(barco.getVida()-disparar);
-                //cargarSonidoCanon();
+                cargarSonidoCanon();
                 balaCañonMovimiento(this, barco);
                 break;
             }
         }
     }
 
+    private void cargarSonidoCanon() {
+        Platform.runLater(()->{
+            Media pick = new Media(this.getClass().getResource("Sonidos/cannonSound.mp3").toString());
+            mediaPlayer = new MediaPlayer(pick);
+            mediaPlayer.play();
+        });
+
+    }
+
     private void balaCañonMovimiento(Barcos barco1, Barcos barco2) {
 
         ImageView bala = new ImageView(new Image(getClass().getResourceAsStream("imagenes/Bala.png")));
         fondo.getChildren().add(bala);
-        bala.setFitHeight(25);
-        bala.setFitWidth(25);
+        bala.setFitHeight(15);
+        bala.setFitWidth(15);
 
         double barco1X = barco1.getImagen().getBoundsInParent().getMinX() + barco1.getImagen().getBoundsInParent().getWidth() / 2;
         double barco1Y = barco1.getImagen().getBoundsInParent().getMinY() + barco1.getImagen().getBoundsInParent().getHeight() / 2;

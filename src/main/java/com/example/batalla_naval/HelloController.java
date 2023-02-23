@@ -1,9 +1,12 @@
 package com.example.batalla_naval;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +34,7 @@ public class HelloController {
     Barcos submarinoUSA;
 
     ControlDeJuego control;
-
+    MediaPlayer mediaPlayer;
     List<Integer> posicionBarco = new ArrayList<>();
 
     public void initialize(){
@@ -39,6 +42,7 @@ public class HelloController {
         ImageView back = new ImageView(fondo);
         ventana.setBackground(new Background(new BackgroundImage(back.getImage(), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        iniciarMusica();
         creacionBarcos();
     }
 
@@ -160,6 +164,16 @@ public class HelloController {
             imagen.setLayoutY(575);
         }
 
+    }
+
+    public void iniciarMusica(){
+        Platform.runLater(()->{
+            Media pick = new Media(this.getClass().getResource("Sonidos/BattleSound(SeaOfThieves).mp3").toString());
+            mediaPlayer = new MediaPlayer(pick);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setVolume(0.77);
+            mediaPlayer.play();
+        });
     }
 
 }
