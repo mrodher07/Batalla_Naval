@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -15,7 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ControlDeJuego {
-    //MediaPlayer mediaPlayer;
     String nombreGanador = "";
     Timeline ganador;
     DialogPane dialogGanador;
@@ -32,7 +32,7 @@ public class ControlDeJuego {
     public synchronized ArrayList<Barcos> getBarcos(){return listaBarcos;}
 
     public void finDeJuego(){
-        ganador = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
+        ganador = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> {
             int barcosES = 0;
             int barcosUSA = 0;
 
@@ -47,12 +47,12 @@ public class ControlDeJuego {
                 }
             }
             if(barcosES == 0 && barcosUSA >=1){
-                nombreGanador = "USA";
+                nombreGanador = "Estados Unidos";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
             }
             if(barcosUSA == 0 && barcosES >=1){
-                nombreGanador = "ES";
+                nombreGanador = "España";
                 mostrarGanador(nombreGanador);
                 ganador.stop();
             }
@@ -62,48 +62,22 @@ public class ControlDeJuego {
     }
 
     public void mostrarGanador(String nombreGanador){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        //stage.getIcons().add(new Image(this.getClass().getResource("imagenes/iconoApp.png").toString()));
+        Alert alertaVictoria = new Alert(Alert.AlertType.INFORMATION);
+        alertaVictoria.setHeaderText(null);
 
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(0.5));
         pauseTransition.setOnFinished(event -> {
             Platform.runLater(() -> {
-                dialogGanador = alert.getDialogPane();
+                dialogGanador = alertaVictoria.getDialogPane();
                 if (nombreGanador.equals("ESA")) {
-                    //dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorAzul.css").toString());
-                    /*ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
-                    imageView.setFitHeight(70);
-                    imageView.setFitWidth(80);
-                    dialogGanador.setGraphic(imageView);*/
-                    /*Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
-                    mediaPlayer= new MediaPlayer(pick);
-                    mediaPlayer.play();*/
-                    alert.setTitle("Victoria del Equipo " + nombreGanador);
-
-
+                    alertaVictoria.setTitle("Victoria del Equipo " + nombreGanador);
                 } else {
-                    /*dialogGanador.getStylesheets().add(this.getClass().getResource("CSS/ganadorRojo.css").toString());
-                    dialogGanador.getStyleClass().add("dialog");
-                    ImageView imageView = new ImageView(new Image(this.getClass().getResource("imagenes/imagenPremio.png").toString()));
-                    imageView.setFitHeight(70);
-                    imageView.setFitWidth(80);
-                    dialogGanador.setGraphic(imageView);
-                    Media pick = new Media(this.getClass().getResource("musica/cancionVictoria.mp3").toString());
-                    mediaPlayer= new MediaPlayer(pick);
-                    mediaPlayer.play();*/
-                    alert.setTitle("Victoria de " + nombreGanador);
+                    alertaVictoria.setTitle("Victoria de " + nombreGanador);
                 }
 
-                //mediaPlayer2.stop();
                 dialogGanador.getStyleClass().add("dialog");
-                alert.setContentText("¡¡¡"+nombreGanador+" ha ganado!!!");
-                //Inicio inicio = new Inicio();
-                alert.showAndWait().ifPresent(response -> {
-                    // mediaPlayer.stop();
-                    // inicio.start(new Stage());
+                alertaVictoria.setContentText("¡¡¡"+nombreGanador+" ha ganado!!!");
+                alertaVictoria.showAndWait().ifPresent(response -> {
                 });
             });
         });
